@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="TaskManagerWPF.commentBox"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" Height="90" Width="411.844">
+    <UserControl.Resources>
+        <s:Double x:Key="fontWeght">16</s:Double>
+    </UserControl.Resources>
+    <Grid Height="90" Margin="0,0,0.2,0" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="{StaticResource fontWeght}">
+            Emloyee Name</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="10"
+                 FontSize="{StaticResource fontWeght}" Name="textMsgBox"
+                 IsReadOnly="True"
+                 BorderThickness="2" Padding="3"
+                ></TextBox>
+    </Grid>
+</UserControl>

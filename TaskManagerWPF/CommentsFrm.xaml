@@ -1,0 +1,44 @@
+﻿<Window x:Class="TaskManagerWPF.CommentsFrm"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManagerWPF"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="CommentsWin" Height="450" Width="455.556">
+    <Window.Resources>
+        <s:Double x:Key="fontWeght">18</s:Double>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ScrollViewer x:Name="scrollerView">
+            <StackPanel Background="Aqua" Name="CommentsContainer">
+
+            </StackPanel>
+        </ScrollViewer>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" ></ColumnDefinition>
+                <ColumnDefinition Width="3*" ></ColumnDefinition>
+                <ColumnDefinition Width="1*" ></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Margin="5 20 5 20"
+                    FontSize="{StaticResource fontWeght}"
+                    Name="btnBack" Click="btnBack_Click">Back</Button>
+            <RichTextBox Grid.Column="1" Block.LineHeight="1"
+                     Margin="9" Name="textMsgBox"
+                    FontSize="{StaticResource fontWeght}" TextChanged="textMsgBox_TextChanged"
+                ></RichTextBox>
+            <Button Grid.Column="2" Margin="5 20 5 20"
+                    FontSize="{StaticResource fontWeght}"
+                    Name="btnSend" Click="btnSend_Click"
+                    IsEnabled="False">Send</Button>
+        </Grid>
+
+    </Grid>
+</Window>

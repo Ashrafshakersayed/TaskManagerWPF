@@ -1,0 +1,54 @@
+﻿<Window x:Class="TaskManagerWPF.TeamDetailsFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManagerWPF"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Button Foreground="#444444" Click="Button_Click">
+                <StackPanel Margin="10">
+                    <fa:ImageAwesome Icon="CaretLeft" Foreground="#2D509C" Width="30" Margin="8"></fa:ImageAwesome>
+                    <TextBlock HorizontalAlignment="Center" Margin="2">Back</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Foreground="#444444" x:Name="btnAddNewTask" Click="btnAddNewTask_Click">
+                <StackPanel>
+                    <fa:ImageAwesome Icon="FileOutline" Foreground="#444444"  Width="45" Margin="8"></fa:ImageAwesome>
+                    <TextBlock HorizontalAlignment="Center" Margin="2">New Task</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Foreground="#444444" x:Name="btnCategory" Click="btnCategory_Click">
+                <StackPanel>
+                    <fa:ImageAwesome Icon="FileOutline" Foreground="#444444"  Width="45" Margin="8"></fa:ImageAwesome>
+                    <TextBlock HorizontalAlignment="Center" Margin="2">New Category</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Foreground="#444444" Name="btnShowEmployees" Click="BtnShowEmployees_Click">
+                <StackPanel>
+                    <fa:ImageAwesome Icon="Users" Width="58" Foreground="#444444"  Margin="8"></fa:ImageAwesome>
+                    <TextBlock HorizontalAlignment="Center" Margin="2">Show Employees</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnEdit" Foreground="#444444" Click="btnEdit_Click">
+                <StackPanel>
+                    <fa:ImageAwesome Icon="PencilSquareOutline" Width="70" Foreground="#2C9753"  Margin="8"></fa:ImageAwesome>
+                    <TextBlock HorizontalAlignment="Center" Margin="2">Edit</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Foreground="#444444" x:Name="btnDelete" Click="btnDelete_Click">
+                <StackPanel>
+                    <fa:ImageAwesome Icon="TrashOutline" Width="50" Foreground="#D83B01"  Margin="8"></fa:ImageAwesome>
+                    <TextBlock HorizontalAlignment="Center" Margin="2">Delete</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <DataGrid MouseDoubleClick="dgvTasks_MouseDoubleClick" AutoGenerateColumns="True" x:Name="dgvTasks" CanUserAddRows="False">
+            
+        </DataGrid>
+    </StackPanel>
+</Window>

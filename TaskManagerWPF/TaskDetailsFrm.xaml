@@ -1,0 +1,214 @@
+﻿<Window x:Class="TaskManagerWPF.TaskDetailsFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        xmlns:local="clr-namespace:TaskManagerWPF"
+        mc:Ignorable="d"
+        Title="TaskDetailsFrm" Height="500" Width="1000" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Grid.Column="0" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="30"
+                   FontWeight="Bold">
+            Task Details
+        </TextBlock>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       FontSize="20"
+                       FontWeight="Bold">
+                Employees
+            </TextBlock>
+            <Button Margin="20, 10" x:Name="btnEditEmp"
+                    Style="{DynamicResource ButtonStyle}" 
+                    FontWeight="Bold" FontSize="20" Click="BtnEditEmp_Click">
+                <fa:ImageAwesome Icon="PencilSquareOutline" Foreground="#2D509C" Width="30"></fa:ImageAwesome>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       FontSize="20"
+                       FontWeight="Bold">
+                SubTasks
+            </TextBlock>
+            <Button  Margin="20, 10" x:Name="btnEditSubTask"
+                    Style="{DynamicResource ButtonStyle}" 
+                    FontWeight="Bold" FontSize="20" Click="BtnEditSubTask_Click">
+                <fa:ImageAwesome Icon="PencilSquareOutline" Foreground="#2D509C" Width="30"></fa:ImageAwesome>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock  
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       FontSize="20"
+                       FontWeight="Bold">
+                Files
+            </TextBlock>
+            <Button Margin="20, 10" x:Name="btnEditFile"
+                    Style="{DynamicResource ButtonStyle}" 
+                    FontWeight="Bold" FontSize="20" Click="BtnEditFile_Click">
+                <fa:ImageAwesome Icon="PencilSquareOutline" Foreground="#2D509C" Width="30"></fa:ImageAwesome>
+            </Button>
+        </StackPanel>
+
+
+
+        <DockPanel VerticalAlignment="Center" Grid.Row="2" Grid.Column="0">
+            <TextBlock DockPanel.Dock="Left" FontSize="20" Margin="5,5, 30,5" >Name:</TextBlock>
+            <TextBox x:Name="txtName" DockPanel.Dock="Right"></TextBox>
+        </DockPanel>
+        <DockPanel VerticalAlignment="Center" Grid.Row="3" Grid.Column="0">
+            <TextBlock DockPanel.Dock="Left" FontSize="20" Margin="5" >Deadline:</TextBlock>
+            <DatePicker x:Name="dtpDeadLine" DockPanel.Dock="Right"></DatePicker>
+        </DockPanel>
+        <DockPanel VerticalAlignment="Center" Grid.Row="4" Grid.Column="0">
+            <TextBlock DockPanel.Dock="Left" FontSize="20" Margin="5,5, 20,5" >Priority:</TextBlock>
+            <ComboBox x:Name="cmbPriority" DockPanel.Dock="Right"></ComboBox>
+        </DockPanel>
+        <DockPanel VerticalAlignment="Center" Grid.Row="5" Grid.Column="0">
+            <TextBlock DockPanel.Dock="Left" FontSize="20" Margin="5" >Category:</TextBlock>
+            <ComboBox x:Name="cmbCategory" DockPanel.Dock="Right"></ComboBox>
+        </DockPanel>
+        
+        
+        
+        <DockPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="5">
+            <ListBox x:Name="lsbEmployees" BorderThickness="2" 
+                     HorizontalContentAlignment="Stretch" 
+                     Background="#FFECF1F6" Margin="10"
+                     SelectionMode="Multiple"
+                     FontWeight="Bold"
+                     >
+
+            </ListBox>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2" Grid.Column="2" Grid.RowSpan="5">
+            <ListBox x:Name="clbSubTasks" BorderThickness="2" 
+                     HorizontalContentAlignment="Stretch" 
+                     Background="#FFECF1F6" Margin="10"
+                     SelectionMode="Multiple"
+                     FontWeight="Bold"
+                     >
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="OverridesDefaultStyle" Value="true" />
+                        <Setter Property="SnapsToDevicePixels" Value="true" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <CheckBox Margin="5,2"
+                                          IsChecked="{Binding IsSelected,RelativeSource={RelativeSource TemplatedParent}}">
+                                        <ContentPresenter />
+                                    </CheckBox>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.Resources>
+            </ListBox>
+        </DockPanel>
+
+        <DockPanel Grid.Row="2" Grid.Column="3" Grid.RowSpan="5">
+            <ListBox x:Name="lsbFiles" BorderThickness="2" MouseRightButtonDown="LsbFiles_MouseRightButtonDown"
+                     HorizontalContentAlignment="Stretch" 
+                     Background="#FFECF1F6" Margin="10"
+                     SelectionMode="Multiple"
+                     FontWeight="Bold"
+                     >
+            </ListBox>
+        </DockPanel>
+
+
+        <Button x:Name="btnComment"  Grid.Row="6" Grid.Column="0" Margin="10" 
+                    Style="{DynamicResource ButtonStyle}" 
+                    FontWeight="Bold" FontSize="20" Click="BtnComment_Click">Comments</Button>
+        <Button x:Name="btnUpdateTask" Grid.Row="7" Grid.Column="3" Margin="10" Click="BtnUpdateTask_Click"
+                    Style="{DynamicResource ButtonStyle}" 
+                    FontWeight="Bold" FontSize="20">Update</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,47 @@
+﻿<Window x:Class="TaskManagerWPF.TeamsList"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskManagerWPF"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        mc:Ignorable="d"
+        Title="TeamsList" Height="450" Width="800"
+        MinWidth="500"
+        WindowState="Maximized"
+        Background="#FFFFFEFE">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <Button Margin="10" x:Name="createTeamButton" Click="createTeamButton_Click">
+                <StackPanel>
+                    <fa:ImageAwesome Icon="FileOutline" Foreground="#444444"  Width="45" Margin="8"></fa:ImageAwesome>
+                    <Label>Create Team</Label>
+                </StackPanel>
+            </Button>
+            <Button Margin="10" x:Name="deleteTeamButton" Click="deleteTeamButton_Click">
+                <StackPanel>
+                    <fa:ImageAwesome Icon="TimesCircle" Width="50" Foreground="#D83B01"  Margin="8"></fa:ImageAwesome>
+                    <Label>Delete Team</Label>
+                </StackPanel>
+            </Button>
+            <Button Margin="10" x:Name="addEmployeeButton" Click="addEmployeeButton_Click">
+                <StackPanel>
+                    <fa:ImageAwesome Icon="Users" Width="58" Foreground="#444444"  Margin="8"></fa:ImageAwesome>
+                    <Label>Add Employee</Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <ListBox FontSize="20"
+                     FontWeight="Bold"
+                     FontFamily="Tahoma"
+                     Margin="30,10"
+                     x:Name="teamsListBox"
+                 MouseDoubleClick="ListBoxItem_MouseDoubleClick" Background="#FFE2E2E2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</Window>
